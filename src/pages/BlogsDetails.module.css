@@ -1,0 +1,90 @@
+.blogWrapper {
+    margin: 2rem 2rem;
+    font-size: larger;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.2rem solid #ffffff;
+    border-radius: 1rem;
+    background-color: black;
+    width: 60%;
+    height: 100vh;
+    justify-content: space-around;
+}
+
+
+.blogWrapper h1 {
+    margin: 1rem 0;
+    background-color: inherit;
+}
+
+.blogWrapper img {
+    background-color: inherit;
+    width: 30%;
+    height: 20%;
+    border: 1px solid transparent;
+    border-radius: inherit;
+}
+
+.blogWrapper img:hover {
+    transform: scale(1.05)
+}
+
+
+.blogWrapper p {
+    margin: 2rem;
+    background-color: inherit;
+}
+
+
+
+.blogWrapper button {
+    position: relative;
+    left: 30%;
+    /* background-color: red; */
+    width: 4rem;
+    height: 2rem;
+    border-radius: 0.3rem;
+    /* padding: 0.5rem; */
+    margin:1rem;
+}
+
+
+.blogWrapper input {
+    /* background-color: red; */
+    width: 15rem;
+    height: 2rem;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    margin:1rem;
+}
+
+.buttonsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+}
+
+
+.contentTextarea {
+    width: 80%;
+    height: 2rem;
+    border: solid 0.1rem #aca8a8;
+    border-radius: 0.5rem;
+    min-height: 50%;
+}
+
+
+.titleText {
+    width: 80%;
+    height: 2rem;
+    border: solid 0.1rem #aca8a8;
+    border-radius: 0.5rem;
+}
+
+.blogsWrapper:hover {
+    transform: scale(1.05);
+    background-color: #100f0ff5;
+}
+
