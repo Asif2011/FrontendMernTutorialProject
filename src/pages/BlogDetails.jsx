@@ -1,10 +1,8 @@
 import { useParams } from "react-router-dom"
 import style from './BlogsDetails.module.css'
-import TextInput from "../components/TextInput"
 import { getBlogByID } from "../api/internal"
 import { useEffect, useState } from "react"
 import Loader from "../components/Loader"
-import cors from "cors"
 import { useNavigate } from "react-router-dom"
 import { updateBlogByID } from "../api/internal"
 
@@ -14,10 +12,7 @@ function BlogDetailsPage() {
     const navigator = useNavigate()
     const [blog, setBlog] = useState({})
     const [error, setError] = useState('')
-    const [content, setContent] = useState('')
-    const [title, setTitle] = useState('')
     const [editState, setEditState] = useState(false)
-    const [photo, setPhoto] = useState('')
     const params = useParams()
 
 
@@ -33,8 +28,6 @@ function BlogDetailsPage() {
                     if (response.status === 200) {
                         setBlog(response.data.blog)
                         console.dir(JSON.stringify(response.data.blog))
-                        setTitle(response.data.blog.title)
-                        setContent(response.data.blog.content)
                         setError(false)
 
                     }

@@ -2,17 +2,13 @@ import { NavLink } from "react-router-dom";
 import styles from './navBar.module.css'
 import { useSelector } from "react-redux";
 import { signout } from "../api/internal";
-import { useNavigate } from "react-router-dom";
 import { resetUser } from "../store/userSlice";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 
 function NavBar() {
     let isAuth = useSelector((state) => state.user.auth)
     let name = useSelector((state) => state.user.name)
-    let navigate = useNavigate()
     let dispatch = useDispatch()
-    const [error, setError] = useState("")
 
     const handleSignout = async () => {
 

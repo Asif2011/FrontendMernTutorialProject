@@ -44,7 +44,7 @@ function useAutoLogin() {
             )()
         }
         ,
-        []
+        [dispatch]
     )
     return loading;// return true if not logged in, false if logged in
 }
