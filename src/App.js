@@ -32,7 +32,7 @@ function App() {
           <div className={styles.layout}>
             <Routes>
               <Route path='/' element={<div className={`${styles.logo}`}><Home /></div>} />
-              <Route path='/crypto' element={<div className={styles.main}><h1>crypto</h1></div>} />
+              <Route path='/developer' element={<div className={styles.main}><p>About to update till 22 jan 2025</p></div>} />
               <Route path='/blogs' element={<Protected isauth={isAuth} className={styles.main}><AllBlogs /></Protected>} />
               <Route path='/blog/:id' exact element={<Protected isauth={isAuth} className={styles.main}><BlogDetailsPage /></Protected>} />
               <Route path='/create' element={<Protected isauth={isAuth}><div className={styles.main}><CreateBlog /></div></Protected>} />
