@@ -41,7 +41,7 @@ function AllBlogs() {
 
     let response
     if (error === false) {
-        response = <div>
+        response = <div className={styles.container}>
             {blogs.map(
                 (blog) => (
                     <div

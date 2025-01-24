@@ -47,19 +47,12 @@ function CreateBlog() {
             <div className={style.header}>
             <TextInput type='text' value={title} name='Title2' label="Title" onChange={(e) => setTitle(e.target.value)} />
             </div>
-            
-            
             <textarea className={style.content} maxLength='400' value={content} label="Content" onChange={(e) => setContent(e.target.value)} />
-            
-            <div>
+            <div className={style.buttonsWrapper}>
             <input id='photo' type='file' name='image' accept='image/jpg, image/jpeg, image/png'
                 onChange={getPhoto} />
             {image===''?'':<img src={image} className={style.imageview} alt='Not found' />}
-            </div>
-            <div>
-                <button
-                    onClick={handleCreate}
-                >Create Blog</button>
+            <button onClick={handleCreate}>Create Blog</button>
             </div>
             <div>
             {error!==''?<p className={style.errorMessage}>{error}</p>:''}

@@ -29,3 +29,39 @@
     width:5rem;
     height:5rem;
 }
+
+.buttonsWrapper{
+    display:flex;
+    margin: 15px;
+    padding:10px;
+    justify-content: end;
+    align-content: flex-start;
+}
+
+.buttonsWrapper button{
+    background-color: white;
+    color:black;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    margin:1rem;
+    height: 2rem;
+    width: 5rem;
+}
+.buttonsWrapper button:hover{
+    background-color: black;
+    color:white;
+}
+
+
+
+.buttonsWrapper input{
+    font-size:1rem;
+    margin:1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 10rem;
+}
+
+
+
