@@ -20,11 +20,9 @@ function NavBar() {
     return (
         <>
             <div className={styles.navbar}>
-                <NavLink className={`${styles.logo} ${styles.inactiveStyle}`} to='/'>Coinbounce</NavLink>
                 <NavLink className={({ isActive }) => isActive ? styles.activeStyle : styles.inactiveStyle} to='/'>Home</NavLink>
                 <NavLink className={({ isActive }) => isActive ? styles.activeStyle : styles.inactiveStyle} to='/blogs'>Blogs</NavLink>
                 <NavLink className={({ isActive }) => isActive ? styles.activeStyle : styles.inactiveStyle} to='/create'>Submit blog</NavLink>
-                <NavLink className={({ isActive }) => isActive ? styles.activeStyle : styles.inactiveStyle} to='/developer' >Developer page</NavLink>
                 {isAuth ?
                     <NavLink to='signout'>
                         <button onClick={handleSignout} className={styles.signout}>{`Signout: ${name}`}</button>
@@ -38,6 +36,7 @@ function NavBar() {
                         </NavLink>
                     </>
                 }
+                <NavLink className={({ isActive }) => isActive ? styles.activeStyle : styles.inactiveStyle} to='/developer' >Developer page</NavLink>
             </div>
             <div className={styles.separator}></div>
         </>
