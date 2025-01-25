@@ -4,7 +4,8 @@ import { getBlogByID } from "../api/internal"
 import { useEffect, useState } from "react"
 import Loader from "../components/Loader"
 import { useNavigate } from "react-router-dom"
-import { updateBlogByID } from "../api/internal"
+import { updateBlogByID, deleteBlogByID } from "../api/internal"
+
 
 
 function BlogDetailsPage() {
@@ -53,11 +54,11 @@ function BlogDetailsPage() {
     }
 
     const handleContent = (e) => {
-        setBlog({...blog, content:e.target.value})
+        setBlog({ ...blog, content: e.target.value })
     }
 
     const handleTitle = (e) => {
-        setBlog({...blog, title:e.target.value})
+        setBlog({ ...blog, title: e.target.value })
     }
 
     const handlePhoto = (e) => {
@@ -66,7 +67,7 @@ function BlogDetailsPage() {
         const reader = new FileReader()
         reader.readAsDataURL(file)
         reader.onloadend = () => {
-            setBlog({...blog,photo:reader.result})
+            setBlog({ ...blog, photo: reader.result })
         }
     }
 
@@ -96,7 +97,7 @@ function BlogDetailsPage() {
                 photo: blog.photo
             }
             updateBlog(newBlog)
-
+            navigator('/blogs')
             // updating the blog
             setEditState(false)
         }
@@ -106,20 +107,48 @@ function BlogDetailsPage() {
 
     }
 
+    const handleDelete = async () => {
+        try {
+            await deleteBlogByID(blog._id)
+        } catch (error) {
+            console.dir(error)
+            return error
+        }
+        navigator('/blogs')
+    }
 
     if (error === false) {
-        page = (<div className={style.blogWrapper}>
-            <h1>Blog Details</h1>
-            <img src={blog.photo} alt="Not found" />
-            <input className={style.titleText} type="text" disabled={!editState} value={blog.title} onChange={handleTitle} />
-            <textarea className={style.contentTextarea} disabled={!editState} value={blog.content} onChange={handleContent} />
-            <div className={style.buttonsWrapper}>
-                <input type='file'  accept="image/*" onChange={handlePhoto} />
-                <button style={{backgroundColor:editState?'green':'red'}} onClick={handleEditUpdateEvent}>
-                {editState?'Update':'Edit'}
-                </button>
+        page = (
+            <div className={style.wrapper}>
+                <div className={style.blogWrapper}>
+                    <h1>Blog Details</h1>
+                    <img src={blog.photo} alt="Not found" />
+                    <input className={style.titleText} type="text" disabled={!editState} value={blog.title} onChange={handleTitle} />
+                    <textarea className={style.contentTextarea} disabled={!editState} value={blog.content} onChange={handleContent} />
+                </div>
+                <div className={style.optionsWrapper} >
+                    <input type='file' disabled={!editState} id='chooseImage' accept="image/*" onChange={handlePhoto} />
+                    <div>
+                        <input type="range" disabled={!editState} defaultValue={0} id="slider" onChange={(e) => {
+                            if (e.target.value === '100') {
+                                if (window.confirm('Are you sure you want to delete this blog?')) {
+                                    handleDelete()
+                                } else {
+                                    e.target.value = 0
+                                }
+                            }
+                        }} style={{ transition: 'all 0.5s ease-in-out' }} />
+                        <p>Slide to delete</p>
+                    </div>
+                    <div></div>
+                    <div>
+                        <button style={{ backgroundColor: editState ? 'green' : 'red' }} className={style.updateButton} onClick={handleEditUpdateEvent}>
+                            {editState ? 'Update' : 'Edit'}
+                        </button>
+                    </div>
+
+                </div>
             </div>
-        </div>
         )
     }
     else {
@@ -133,8 +162,3 @@ function BlogDetailsPage() {
 }
 
 export default BlogDetailsPage
-
-
-
-
-

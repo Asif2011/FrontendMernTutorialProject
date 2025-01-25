@@ -86,7 +86,7 @@ api.interceptors.response.use(
 
 
 
-export const getBlogByID = async (blogID)=>{
+export const getBlogByID = async (blogID) => {
     let response;
     try {
         response = await api.get(`/blog/${blogID}`)
@@ -97,10 +97,20 @@ export const getBlogByID = async (blogID)=>{
 }
 
 
-export const updateBlogByID = async (newblogdata)=> {
+export const updateBlogByID = async (newblogdata) => {
     let response;
     try {
         response = await api.put('/update', newblogdata)
+    } catch (e) {
+        return e
+    }
+    return response
+}
+
+export const deleteBlogByID = async (blogID) => {
+    let response;
+    try {
+        response = await api.delete(`/delete/${blogID}`)
     } catch (e) {
         return e
     }
