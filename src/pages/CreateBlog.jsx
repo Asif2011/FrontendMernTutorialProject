@@ -48,6 +48,7 @@ function CreateBlog() {
             <TextInput type='text' value={title} name='Title2' label="Title" onChange={(e) => setTitle(e.target.value)} />
             </div>
             <textarea className={style.content} maxLength='400' value={content} label="Content" onChange={(e) => setContent(e.target.value)} />
+            
             <div className={style.buttonsWrapper}>
             <input id='photo' type='file' name='image' accept='image/jpg, image/jpeg, image/png'
                 onChange={getPhoto} />
